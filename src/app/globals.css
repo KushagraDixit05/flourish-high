@@ -1,26 +1,180 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Brand Tokens + Tailwind v4 Theme ──────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors */
+  --color-fh-base:        #0e1210;
+  --color-fh-surface:     #f5f1eb;
+  --color-fh-green:       #2d6a4f;
+  --color-fh-green-light: #52b788;
+  --color-fh-green-dark:  #1b4332;
+  --color-fh-gold:        #c8a96e;
+  --color-fh-gold-light:  #e8d5a3;
+  --color-fh-muted:       #7a7068;
+  --color-fh-border:      rgba(255,255,255,0.1);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Fonts */
+  --font-display: var(--font-cormorant), serif;
+  --font-body:    var(--font-dm-sans), sans-serif;
+
+  /* Border radius — default pill */
+  --radius:        9999px;
+  --radius-DEFAULT: 9999px;
+
+  /* Keyframes */
+  --animate-fade-up: fade-up 0.7s ease forwards;
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); filter: blur(10px); }
+    to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
 }
 
+/* ─── CSS Custom Properties (direct access) ─────────────────────────────── */
+:root {
+  --fh-base:    #0e1210;
+  --fh-surface: #f5f1eb;
+  --fh-green:   #2d6a4f;
+  --fh-gold:    #c8a96e;
+  --fh-muted:   #7a7068;
+}
+
+/* ─── Base resets ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: #0e1210;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0e1210;
+  color: white;
+  font-family: var(--font-dm-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Text selection ─────────────────────────────────────────────────────── */
+::selection {
+  background: #2d6a4f;
+  color: #f5f1eb;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LIQUID-GLASS UTILITIES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0)    40%,
+    rgba(255, 255, 255, 0)    60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Strong variant — primary CTA, heavy blur */
+.liquid-glass-strong {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: none;
+  box-shadow:
+    4px 4px 4px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-strong::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5)  0%,
+    rgba(255, 255, 255, 0.2)  20%,
+    rgba(255, 255, 255, 0)    40%,
+    rgba(255, 255, 255, 0)    60%,
+    rgba(255, 255, 255, 0.2)  80%,
+    rgba(255, 255, 255, 0.5)  100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── Decorative ruled line ─────────────────────────────────────────────── */
+.ruled-line {
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, #2d6a4f, transparent);
+  transform-origin: left;
+}
+
+/* ─── Animate utilities ──────────────────────────────────────────────────── */
+.animate-fade-up  { animation: fade-up 0.7s ease forwards; }
+.animate-marquee  { animation: marquee 28s linear infinite; }
+
+/* ─── Display font size helpers ─────────────────────────────────────────── */
+.text-display-xl {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+.text-display-lg {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.text-display-md {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.05;
+}
+
+/* ─── Input reset for glass fields ─────────────────────────────────────── */
+input, textarea {
+  outline: none;
+}
+input:focus, textarea:focus {
+  border-color: #2d6a4f !important;
 }
