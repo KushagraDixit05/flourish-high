@@ -68,8 +68,16 @@ function ProductCard({ name, desc, tags, Icon, imgSrc }: CategoryCard) {
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="liquid-glass group relative cursor-pointer overflow-hidden flex flex-col"
-      style={{ borderRadius: "1.25rem", minHeight: "400px" }}
+      className="group relative cursor-pointer overflow-hidden flex flex-col"
+      style={{
+        borderRadius: "1.25rem",
+        minHeight: "400px",
+        backdropFilter: "blur(28px)",
+        WebkitBackdropFilter: "blur(28px)",
+        background: "rgba(14,18,16,0.55)",
+        border: "1px solid rgba(255,255,255,0.12)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1)",
+      }}
     >
       {/* Gold hover border top */}
       <span
@@ -96,18 +104,27 @@ function ProductCard({ name, desc, tags, Icon, imgSrc }: CategoryCard) {
         />
         {/* Icon badge over image, bottom-left */}
         <div
-          className="absolute bottom-3 left-4 liquid-glass w-10 h-10 flex items-center justify-center z-10"
-          style={{ borderRadius: "0.75rem" }}
+          className="absolute bottom-3 left-4 w-10 h-10 flex items-center justify-center z-10"
+          style={{
+            borderRadius: "0.75rem",
+            background: "rgba(200,169,110,0.15)",
+            border: "1px solid rgba(200,169,110,0.3)",
+            backdropFilter: "blur(8px)",
+          }}
         >
-          <Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
+          <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: "#c8a96e" }} />
         </div>
         {/* Tags — top-right over image */}
         <div className="absolute top-3 right-3 flex flex-wrap justify-end gap-1.5 max-w-[70%] z-10">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="liquid-glass rounded-full px-2.5 py-0.5 text-[10px] font-body text-white/90 whitespace-nowrap"
-              style={{ backdropFilter: "blur(8px)" }}
+              className="rounded-full px-2.5 py-0.5 text-[10px] font-body text-white/90 whitespace-nowrap"
+              style={{
+                background: "rgba(14,18,16,0.55)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                backdropFilter: "blur(8px)",
+              }}
             >
               {tag}
             </span>

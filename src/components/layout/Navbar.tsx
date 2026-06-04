@@ -19,48 +19,43 @@ export default function Navbar() {
 
   return (
     <nav
-      className={cn(
-        "fixed top-4 left-0 right-0 z-50 px-8 lg:px-16",
-        "flex items-center justify-between"
-      )}
+      className="fixed top-4 left-0 right-0 z-50 flex items-center justify-center px-4"
     >
-      {/* Logo — golden FHI mark in a frosted pill */}
-      <a
-        href="#home"
-        className={cn(
-          "flex items-center gap-2.5 rounded-full px-3 py-2 transition-all duration-300 flex-shrink-0",
-          "border border-white/10",
-          scrolled
-            ? "backdrop-blur-[18px] bg-black/40 shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
-            : "backdrop-blur-[12px] bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
-        )}
-      >
-        <Image
-          src="/logo-golden.png"
-          alt="Flourish High International"
-          width={32}
-          height={32}
-          className="object-contain"
-          style={{ filter: "drop-shadow(0 0 6px rgba(200,169,110,0.4))" }}
-        />
-        <span
-          className="hidden sm:block font-display italic text-sm leading-none select-none"
-          style={{ color: "#c8a96e", letterSpacing: "0.01em" }}
-        >
-          Flourish High
-        </span>
-      </a>
-
-      {/* Center nav pill (desktop) — always frosted */}
+      {/* Single centered pill — logo + links + CTA (desktop) */}
       <div
         className={cn(
-          "hidden md:flex items-center gap-1 rounded-full px-1.5 py-1.5",
+          "hidden md:flex items-center gap-1 rounded-full px-2 py-1.5",
           "border border-white/10 transition-all duration-300",
           scrolled
-            ? "backdrop-blur-[24px] bg-black/45 shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
-            : "backdrop-blur-[14px] bg-white/8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
+            ? "backdrop-blur-[24px] bg-black/50 shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
+            : "backdrop-blur-[14px] bg-white/6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
         )}
       >
+        {/* Logo inside pill */}
+        <a
+          href="#home"
+          className="flex items-center gap-2 px-2 py-1 mr-1 flex-shrink-0"
+        >
+          <Image
+            src="/logo-golden.png"
+            alt="Flourish High International"
+            width={28}
+            height={28}
+            className="object-contain"
+            style={{ filter: "drop-shadow(0 0 5px rgba(200,169,110,0.45))" }}
+          />
+          <span
+            className="font-display italic text-sm leading-none select-none"
+            style={{ color: "#c8a96e", letterSpacing: "0.01em" }}
+          >
+            Flourish High
+          </span>
+        </a>
+
+        {/* Divider */}
+        <span className="w-px h-4 bg-white/15 mx-1 flex-shrink-0" />
+
+        {/* Nav links */}
         {NAV_LINKS.map((link) => (
           <a
             key={link}
@@ -70,6 +65,8 @@ export default function Navbar() {
             {link}
           </a>
         ))}
+
+        {/* CTA */}
         <a
           href="#contact"
           className="ml-1 flex items-center gap-1 bg-white rounded-full px-4 py-2 text-sm font-body font-semibold whitespace-nowrap hover:bg-white/90 transition-colors duration-200"
@@ -79,8 +76,19 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Hamburger (mobile) */}
-      <div className="w-10 h-10 flex items-center justify-end md:hidden">
+      {/* Mobile: logo left + hamburger right */}
+      <div className="md:hidden w-full flex items-center justify-between px-4">
+        <a href="#home" className="flex items-center gap-2">
+          <Image
+            src="/logo-golden.png"
+            alt="Flourish High International"
+            width={28}
+            height={28}
+            className="object-contain"
+            style={{ filter: "drop-shadow(0 0 5px rgba(200,169,110,0.45))" }}
+          />
+          <span className="font-display italic text-sm" style={{ color: "#c8a96e" }}>Flourish High</span>
+        </a>
         <button
           className={cn(
             "w-10 h-10 rounded-full flex items-center justify-center text-white transition-all",
