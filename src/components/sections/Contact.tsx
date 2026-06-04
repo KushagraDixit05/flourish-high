@@ -8,11 +8,13 @@ import FadingVideo from "@/components/ui/FadingVideo";
 const CONTACT_VIDEO =
   "https://videos.pexels.com/video-files/3753372/3753372-uhd_2560_1440_25fps.mp4";
 
+// ── Centralised contact data (single source of truth) ────────────────────────
 const CONTACT = {
-  email:    "info@flourishhigh.com",
-  phone:    "+91 XXXXXXXXXX",
-  whatsapp: "91XXXXXXXXXX",
-  address:  "India",
+  email:      "contact@flourishhigh.com",
+  phoneIN:    "+91 9131230076",
+  phoneNZ:    "+64 220856514",
+  whatsapp:   "919131230076",
+  address:    "Bhopal (MP), India — 462024",
 };
 
 const waUrl = `https://wa.me/${CONTACT.whatsapp}?text=Hello%2C%20I%27m%20interested%20in%20trading%20with%20Flourish%20High.`;
@@ -36,14 +38,11 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut" as const }}
           viewport={{ once: true, amount: 0.2 }}
           className="mb-12"
         >
-          <p
-            className="text-sm font-body mb-4 tracking-widest uppercase"
-            style={{ color: "#c8a96e" }}
-          >
+          <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
             // Get in Touch
           </p>
           <h2
@@ -61,7 +60,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            transition={{ duration: 0.7, ease: "easeOut" as const, delay: 0.1 }}
             viewport={{ once: true }}
             className="flex flex-col gap-6"
           >
@@ -71,6 +70,7 @@ export default function Contact() {
             </p>
 
             <div className="flex flex-col gap-4">
+              {/* Email */}
               <a
                 href={`mailto:${CONTACT.email}`}
                 className="flex items-center gap-3 text-white/80 hover:text-white transition-colors font-body text-sm"
@@ -80,15 +80,36 @@ export default function Contact() {
                 </div>
                 {CONTACT.email}
               </a>
+
+              {/* India phone */}
               <a
-                href={`tel:${CONTACT.phone}`}
+                href={`tel:${CONTACT.phoneIN.replace(/\s/g, "")}`}
                 className="flex items-center gap-3 text-white/80 hover:text-white transition-colors font-body text-sm"
               >
                 <div className="liquid-glass w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0">
                   <Phone className="w-4 h-4 text-white" />
                 </div>
-                {CONTACT.phone}
+                <span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded mr-1.5 font-body font-medium" style={{ background: "rgba(200,169,110,0.15)", color: "#c8a96e" }}>IN</span>
+                  {CONTACT.phoneIN}
+                </span>
               </a>
+
+              {/* NZ phone */}
+              <a
+                href={`tel:${CONTACT.phoneNZ.replace(/\s/g, "")}`}
+                className="flex items-center gap-3 text-white/80 hover:text-white transition-colors font-body text-sm"
+              >
+                <div className="liquid-glass w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-4 h-4 text-white" />
+                </div>
+                <span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded mr-1.5 font-body font-medium" style={{ background: "rgba(200,169,110,0.15)", color: "#c8a96e" }}>NZ</span>
+                  {CONTACT.phoneNZ}
+                </span>
+              </a>
+
+              {/* Address */}
               <div className="flex items-center gap-3 text-white/80 font-body text-sm">
                 <div className="liquid-glass w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-4 h-4 text-white" />
@@ -102,7 +123,7 @@ export default function Contact() {
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-body font-medium text-white transition-colors mt-2"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-body font-medium text-white transition-colors mt-2 hover:opacity-90"
               style={{ background: "#2d6a4f" }}
             >
               <MessageCircle className="w-4 h-4" />
@@ -114,7 +135,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut" as const, delay: 0.2 }}
             viewport={{ once: true }}
             className="liquid-glass-strong p-8"
             style={{ borderRadius: "1.25rem" }}
@@ -129,58 +150,67 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   id="rfq-name"
+                  name="name"
                   type="text"
                   placeholder="Full Name *"
+                  autoComplete="name"
                   required
-                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:border-fh-green transition-colors"
+                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
                 />
                 <input
                   id="rfq-email"
+                  name="email"
                   type="email"
                   placeholder="Email Address *"
+                  autoComplete="email"
                   required
-                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:border-fh-green transition-colors"
+                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
                 />
                 <input
                   id="rfq-company"
+                  name="company"
                   type="text"
                   placeholder="Company Name"
-                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:border-fh-green transition-colors"
+                  autoComplete="organization"
+                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
                 />
                 <input
                   id="rfq-country"
+                  name="country"
                   type="text"
                   placeholder="Country *"
+                  autoComplete="country-name"
                   required
-                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:border-fh-green transition-colors"
+                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
                 />
                 <input
                   id="rfq-product"
+                  name="product"
                   type="text"
                   placeholder="Product of Interest *"
                   required
-                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:border-fh-green transition-colors"
+                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
                 />
                 <input
                   id="rfq-quantity"
+                  name="quantity"
                   type="text"
                   placeholder="Estimated Quantity / MOQ"
-                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:border-fh-green transition-colors"
+                  className="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
                 />
               </div>
               <textarea
                 id="rfq-message"
+                name="message"
                 placeholder="Tell us about your requirements..."
                 rows={4}
-                className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:border-fh-green transition-colors resize-none"
+                className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm font-body text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors resize-none"
                 style={{ borderRadius: "1rem" }}
               />
               <button
                 type="submit"
-                className="w-full rounded-full px-6 py-3 text-sm font-body font-semibold text-white flex items-center justify-center gap-2 transition-colors duration-200 mt-2"
+                className="w-full rounded-full px-6 py-3 text-sm font-body font-semibold text-white flex items-center justify-center gap-2 transition-opacity duration-200 mt-2 hover:opacity-85"
                 style={{ background: "#2d6a4f" }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#52b788")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "#2d6a4f")}
               >
                 Send Inquiry <ArrowUpRight className="h-4 w-4" />
               </button>

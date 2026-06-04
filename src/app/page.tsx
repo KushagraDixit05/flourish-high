@@ -1,3 +1,4 @@
+import Navbar   from "@/components/layout/Navbar";
 import Hero     from "@/components/sections/Hero";
 import Products from "@/components/sections/Products";
 import Services from "@/components/sections/Services";
@@ -8,7 +9,8 @@ import Footer   from "@/components/layout/Footer";
 export default function Home() {
   return (
     <main style={{ background: "#0e1210", color: "white", overflowX: "hidden" }}>
-      {/* Navbar is fixed-position, rendered inside Hero to keep semantic proximity */}
+      {/* Navbar lives at root level — never inside any section stacking context */}
+      <Navbar />
       <Hero />
       <Products />
       <Services />

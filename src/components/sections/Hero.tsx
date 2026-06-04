@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Clock, Globe } from "lucide-react";
 import FadingVideo  from "@/components/ui/FadingVideo";
 import BlurText     from "@/components/ui/BlurText";
 import MarqueeStrip from "@/components/ui/MarqueeStrip";
-import Navbar       from "@/components/layout/Navbar";
 
 // Cloudfront URL (from specialized prompt) — high-quality aerial grain/nature footage
 const HERO_VIDEO =
@@ -36,7 +36,24 @@ export default function Hero() {
 
       {/* Content layer */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        <Navbar />
+
+        {/* Hero brand mark — top-left, appears immediately */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" as const, delay: 0 }}
+          className="absolute top-6 left-6 md:top-8 md:left-10 lg:left-14 z-20 pointer-events-none"
+        >
+          <Image
+            src="/logo-golden.png"
+            alt="Flourish High International"
+            width={96}
+            height={96}
+            priority
+            className="object-contain md:w-28 md:h-28"
+            style={{ filter: "drop-shadow(0 2px 16px rgba(200,169,110,0.4))" }}
+          />
+        </motion.div>
 
         {/* Center content */}
         <div className="flex-1 flex flex-col items-center justify-center pt-24 px-4 text-center gap-6">

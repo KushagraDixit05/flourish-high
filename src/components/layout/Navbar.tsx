@@ -19,7 +19,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-4 left-0 right-0 z-50 flex items-center justify-center px-4"
+      className="fixed top-4 left-0 right-0 z-[9999] flex items-center justify-center px-4"
     >
       {/* Single centered pill — logo + links + CTA (desktop) */}
       <div
