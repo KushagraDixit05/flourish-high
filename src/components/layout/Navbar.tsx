@@ -68,7 +68,9 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="#contact"
+          href="https://fhi-tool-frontend.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="ml-1 flex items-center gap-1 bg-white rounded-full px-4 py-2 text-sm font-body font-semibold whitespace-nowrap hover:bg-white/90 transition-colors duration-200"
           style={{ color: "#0e1210" }}
         >
@@ -124,7 +126,9 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="https://fhi-tool-frontend.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white rounded-full px-4 py-2 text-sm font-semibold text-center font-body mt-2"
             style={{ color: "#0e1210" }}
             onClick={() => setOpen(false)}

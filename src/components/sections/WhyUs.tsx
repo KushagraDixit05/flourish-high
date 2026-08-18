@@ -5,9 +5,9 @@ import { motion, useMotionValue, useTransform, animate, useInView } from "framer
 
 // ── CountUp component ────────────────────────────────────────────────────────
 function CountUp({ target, suffix = "+" }: { target: number; suffix?: string }) {
-  const ref    = useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
-  const count  = useMotionValue(0);
+  const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => Math.round(v) + suffix);
 
   useEffect(() => {
@@ -27,18 +27,18 @@ function CountUp({ target, suffix = "+" }: { target: number; suffix?: string }) 
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 const STATS = [
-  { target: 500, label: "Shipments completed"      },
-  { target: 20,  label: "Countries served"         },
-  { target: 200, label: "Verified suppliers"       },
-  { target: 15,  label: "Years combined experience" },
+  { target: 500, label: "Shipments completed" },
+  { target: 20, label: "Countries served" },
+  { target: 200, label: "Verified suppliers" },
+  { target: 15, label: "Years combined experience" },
 ];
 
 const DIFFERENTIATORS = [
-  { n: "01", title: "Deep Sourcing Network",  desc: "200+ verified suppliers across Indian agricultural regions." },
-  { n: "02", title: "Compliance-First",       desc: "All shipments fully documented to destination-country standards." },
-  { n: "03", title: "24hr Quote Turnaround",  desc: "Quotes within 24 hours. Samples arranged within 2 weeks." },
-  { n: "04", title: "20+ Trade Lanes",        desc: "Established routes across Asia, MENA, and Europe." },
-  { n: "05", title: "Quality Guaranteed",     desc: "Pre-shipment inspection is standard on every order." },
+  { n: "01", title: "Deep Sourcing Network", desc: "200+ verified suppliers across Indian agricultural regions." },
+  { n: "02", title: "Compliance-First", desc: "All shipments fully documented to destination-country standards." },
+  { n: "03", title: "24hr Quote Turnaround", desc: "Quotes within 24 hours. Samples arranged within 2 weeks." },
+  { n: "04", title: "20+ Trade Lanes", desc: "Established routes across Asia, MENA, and Europe." },
+  { n: "05", title: "Quality Guaranteed", desc: "Pre-shipment inspection is standard on every order." },
   { n: "06", title: "Long-Term Partnerships", desc: "Average client relationship exceeds 3 years." },
 ];
 
@@ -66,7 +66,7 @@ export default function WhyUs() {
         viewport={{ once: true, amount: 0.2 }}
       >
         <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
-          // Why Choose Us
+          Why Choose Us
         </p>
         <h2
           className="font-display italic text-white leading-[0.9]"

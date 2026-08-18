@@ -7,36 +7,36 @@ import type { LucideIcon } from "lucide-react";
 import FadingVideo from "@/components/ui/FadingVideo";
 
 const SERVICES_VIDEO =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4";
-
+  //"https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4";
+  "https://videos.pexels.com/video-files/29903737/12836096_2560_1440_60fps.mp4";
 interface ServiceCard {
-  name:   string;
-  desc:   string;
-  tags:   string[];
-  Icon:   LucideIcon;
+  name: string;
+  desc: string;
+  tags: string[];
+  Icon: LucideIcon;
   imgSrc: string;
 }
 
 const SERVICES: ServiceCard[] = [
   {
-    name:   "Export Services",
-    desc:   "End-to-end sourcing, quality inspection, documentation and freight from India to your port.",
-    tags:   ["FOB / CIF / CFR", "APEDA Docs", "Pre-Ship Inspect", "Phytosanitary"],
-    Icon:   Ship,
+    name: "Export Services",
+    desc: "End-to-end sourcing, quality inspection, documentation and freight from India to your port.",
+    tags: ["FOB / CIF / CFR", "APEDA Docs", "Pre-Ship Inspect", "Phytosanitary"],
+    Icon: Ship,
     imgSrc: "/products/export-services.png",
   },
   {
-    name:   "Import Services",
-    desc:   "We procure goods internationally on your behalf — supplier vetting, customs clearance, last-mile.",
-    tags:   ["Supplier Vetting", "Customs Filing", "Lab Testing", "Bonded Warehouse"],
-    Icon:   PackageOpen,
+    name: "Import Services",
+    desc: "We procure goods internationally on your behalf — supplier vetting, customs clearance, last-mile.",
+    tags: ["Supplier Vetting", "Customs Filing", "Lab Testing", "Bonded Warehouse"],
+    Icon: PackageOpen,
     imgSrc: "/products/import-services.png",
   },
   {
-    name:   "Trade Consulting",
-    desc:   "HS code advisory, RoDTEP / duty optimisation, market entry research, and compliance guidance.",
-    tags:   ["HS Code Advice", "Duty Optimise", "Market Research", "Compliance"],
-    Icon:   FileSearch,
+    name: "Trade Consulting",
+    desc: "HS code advisory, RoDTEP / duty optimisation, market entry research, and compliance guidance.",
+    tags: ["HS Code Advice", "Duty Optimise", "Market Research", "Compliance"],
+    Icon: FileSearch,
     imgSrc: "/products/trade-consulting.png",
   },
 ];
@@ -154,7 +154,7 @@ export default function Services() {
           className="mb-auto"
         >
           <p className="text-sm font-body mb-6 tracking-widest uppercase" style={{ color: "rgba(200,169,110,0.9)" }}>
-            // Services
+            Services
           </p>
           <h2
             className="font-display italic text-white leading-[0.9]"

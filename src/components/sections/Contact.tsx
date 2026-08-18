@@ -10,11 +10,11 @@ const CONTACT_VIDEO =
 
 // ── Centralised contact data (single source of truth) ────────────────────────
 const CONTACT = {
-  email:      "contact@flourishhigh.com",
-  phoneIN:    "+91 9131230076",
-  phoneNZ:    "+64 220856514",
-  whatsapp:   "919131230076",
-  address:    "Bhopal (MP), India — 462024",
+  email: "contact@flourishhigh.com",
+  phoneIN: "+91 9131230076",
+  phoneNZ: "+64 220856514",
+  whatsapp: "919131230076",
+  address: "Bhopal (MP), India — 462024",
 };
 
 const waUrl = `https://wa.me/${CONTACT.whatsapp}?text=Hello%2C%20I%27m%20interested%20in%20trading%20with%20Flourish%20High.`;
@@ -43,7 +43,7 @@ export default function Contact() {
           className="mb-12"
         >
           <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
-            // Get in Touch
+            Get in Touch
           </p>
           <h2
             className="font-display italic text-white leading-[0.9]"

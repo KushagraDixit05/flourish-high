@@ -8,12 +8,12 @@ interface FadingVideoProps {
   style?: React.CSSProperties;
 }
 
-const FADE_MS       = 500;   // ms for each fade transition
-const FADE_OUT_LEAD = 0.55;  // seconds before end to start fade-out
+const FADE_MS = 500;   // ms for each fade transition
+const FADE_OUT_LEAD = 0.05;  // seconds before end to start fade-out
 
 export default function FadingVideo({ src, className, style }: FadingVideoProps) {
-  const videoRef     = useRef<HTMLVideoElement>(null);
-  const rafRef       = useRef<number>(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const rafRef = useRef<number>(0);
   const fadingOutRef = useRef(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function FadingVideo({ src, className, style }: FadingVideoProps)
     // ── Fade helper (rAF-driven, resumes from current opacity) ──────────
     function fadeTo(target: number, durationMs: number) {
       cancelAnimationFrame(rafRef.current);
-      const start    = performance.now();
+      const start = performance.now();
       const startVal = parseFloat(video!.style.opacity ?? "0");
 
       function step(now: number) {
@@ -37,7 +37,7 @@ export default function FadingVideo({ src, className, style }: FadingVideoProps)
     // ── Event handlers ───────────────────────────────────────────────────
     function onLoaded() {
       video!.style.opacity = "0";
-      video!.play().catch(() => {});
+      video!.play().catch(() => { });
       fadeTo(1, FADE_MS);
     }
 
@@ -53,9 +53,9 @@ export default function FadingVideo({ src, className, style }: FadingVideoProps)
       video!.style.opacity = "0";
       setTimeout(() => {
         if (!video) return;
-        video.currentTime    = 0;
+        video.currentTime = 0;
         fadingOutRef.current = false;
-        video.play().catch(() => {});
+        video.play().catch(() => { });
         fadeTo(1, FADE_MS);
       }, 100);
     }
@@ -63,13 +63,13 @@ export default function FadingVideo({ src, className, style }: FadingVideoProps)
     video.style.opacity = "0";
     video.addEventListener("loadeddata", onLoaded);
     video.addEventListener("timeupdate", onTimeUpdate);
-    video.addEventListener("ended",      onEnded);
+    video.addEventListener("ended", onEnded);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
       video.removeEventListener("loadeddata", onLoaded);
       video.removeEventListener("timeupdate", onTimeUpdate);
-      video.removeEventListener("ended",      onEnded);
+      video.removeEventListener("ended", onEnded);
     };
   }, [src]);
 

@@ -11,54 +11,54 @@ const PRODUCTS_VIDEO =
   "https://videos.pexels.com/video-files/7667722/7667722-uhd_2560_1440_25fps.mp4";
 
 interface CategoryCard {
-  name:    string;
-  desc:    string;
-  tags:    string[];
-  Icon:    LucideIcon;
-  imgSrc:  string;
+  name: string;
+  desc: string;
+  tags: string[];
+  Icon: LucideIcon;
+  imgSrc: string;
 }
 
 const CATEGORIES: CategoryCard[] = [
   {
-    name:   "Spices & Herbs",
-    desc:   "Turmeric, red chilli, cardamom, pepper, coriander — direct from Andhra Pradesh & Kerala.",
-    tags:   ["FSSAI Cert", "Phytosanitary", "Export Grade"],
-    Icon:   Leaf,
+    name: "Spices & Herbs",
+    desc: "Turmeric, red chilli, cardamom, pepper, coriander — direct from Andhra Pradesh & Kerala.",
+    tags: ["FSSAI Cert", "Phytosanitary", "Export Grade"],
+    Icon: Leaf,
     imgSrc: "/products/spices-herbs.png",
   },
   {
-    name:   "Rice Varieties",
-    desc:   "Basmati, Sona Masoori, Idly Rice, Ponni — sourced from Punjab, Telangana & Tamil Nadu.",
-    tags:   ["Non-GMO", "APEDA Cert", "Custom Milling"],
-    Icon:   Wheat,
+    name: "Rice Varieties",
+    desc: "Basmati, Sona Masoori, Idly Rice, Ponni — sourced from Punjab, Telangana & Tamil Nadu.",
+    tags: ["Non-GMO", "APEDA Cert", "Custom Milling"],
+    Icon: Wheat,
     imgSrc: "/products/rice-varieties.png",
   },
   {
-    name:   "Pulses & Lentils",
-    desc:   "Chana dal, toor dal, moong, urad — cleaned, sorted and export-packed.",
-    tags:   ["Machine Cleaned", "Low Moisture", "Bulk & Retail"],
-    Icon:   Circle,
+    name: "Pulses & Lentils",
+    desc: "Chana dal, toor dal, moong, urad — cleaned, sorted and export-packed.",
+    tags: ["Machine Cleaned", "Low Moisture", "Bulk & Retail"],
+    Icon: Circle,
     imgSrc: "/products/pulses-lentils.png",
   },
   {
-    name:   "Edible Oils",
-    desc:   "Cold-pressed coconut oil, groundnut oil, sesame oil — food-grade certified.",
-    tags:   ["Cold Press", "Food Grade", "BRC Aligned"],
-    Icon:   Droplets,
+    name: "Edible Oils",
+    desc: "Cold-pressed coconut oil, groundnut oil, sesame oil — food-grade certified.",
+    tags: ["Cold Press", "Food Grade", "BRC Aligned"],
+    Icon: Droplets,
     imgSrc: "/products/edible-oils.png",
   },
   {
-    name:   "FMCG Goods",
-    desc:   "Packaged foods, personal care, household goods — bulk wholesale for distributors.",
-    tags:   ["Multi-SKU", "Private Label", "MOQ Flexible"],
-    Icon:   Package,
+    name: "FMCG Goods",
+    desc: "Packaged foods, personal care, household goods — bulk wholesale for distributors.",
+    tags: ["Multi-SKU", "Private Label", "MOQ Flexible"],
+    Icon: Package,
     imgSrc: "/products/fmcg-goods.png",
   },
   {
-    name:   "Custom Sourcing",
-    desc:   "Don't see your product? We'll source it from our 200+ verified Indian suppliers.",
-    tags:   ["Any Commodity", "24hr Response", "Free Quote"],
-    Icon:   Search,
+    name: "Custom Sourcing",
+    desc: "Don't see your product? We'll source it from our 200+ verified Indian suppliers.",
+    tags: ["Any Commodity", "24hr Response", "Free Quote"],
+    Icon: Search,
     imgSrc: "/products/custom-sourcing.png",
   },
 ];
@@ -177,7 +177,7 @@ export default function Products() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
-            // Our Products
+            Our Products
           </p>
           <h2 className="font-display italic text-white text-display-lg leading-[0.9]">
             Quality Goods,<br />Globally Traded
