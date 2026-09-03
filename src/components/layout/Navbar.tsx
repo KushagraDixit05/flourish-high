@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const NAV_LINKS = ["Home", "Products", "Services", "Why Us", "Contact"];
+const NAV_LINKS = ["Home", "Products", "How We Work", "Why Us", "Contact"];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -59,7 +59,7 @@ export default function Navbar() {
         {NAV_LINKS.map((link) => (
           <a
             key={link}
-            href={`#${link.toLowerCase().replace(" ", "-")}`}
+            href={`#${link.toLowerCase().replaceAll(" ", "-")}`}
             className="px-3 py-2 text-sm font-body font-medium text-white/85 hover:text-white rounded-full transition-colors duration-200 hover:bg-white/10"
           >
             {link}
@@ -118,7 +118,7 @@ export default function Navbar() {
           {NAV_LINKS.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase().replace(" ", "-")}`}
+              href={`#${link.toLowerCase().replaceAll(" ", "-")}`}
               className="text-white font-body text-lg hover:text-white/70 transition-colors"
               onClick={() => setOpen(false)}
             >

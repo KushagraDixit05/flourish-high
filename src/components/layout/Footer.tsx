@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const NAV_LINKS    = ["Products", "Services", "Why Us", "About", "Contact"];
-const PRODUCT_CATS = ["Spices & Herbs", "Rice Varieties", "Pulses & Lentils", "Edible Oils", "FMCG Goods"];
+const NAV_LINKS    = ["Products", "How We Work", "Why Us", "About", "Contact"];
+const PRODUCT_CATS = ["Handicrafts & Home Décor", "Textiles & Linen", "Carpets & Rugs", "Paper & Stationery", "Custom Sourcing"];
 
 // Premium LinkedIn SVG icon
 function LinkedInIcon() {
@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
 
           <p className="font-body text-sm text-white/60 leading-relaxed max-w-[240px] mt-4">
-            India-based International Trading Company. Quality commodities, globally traded.
+            India-based global trading company. Connecting artisans, manufacturers, and international buyers.
           </p>
 
           {/* Social links */}
@@ -97,7 +97,7 @@ export default function Footer() {
           {NAV_LINKS.map((l) => (
             <a
               key={l}
-              href={`#${l.toLowerCase().replace(" ", "-")}`}
+              href={`#${l.toLowerCase().replaceAll(" ", "-")}`}
               className="block font-body text-sm text-white/60 hover:text-white mb-2 transition-colors"
             >
               {l}
@@ -157,7 +157,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="font-body text-xs text-white/40">
-          © 2025 Flourish High International. All rights reserved.
+          © 2026 Flourish High International. All rights reserved.
         </p>
         <p className="font-body text-xs text-white/30">
           IEC: XXXXXXXXXX · GST: XXXXXXXXXX

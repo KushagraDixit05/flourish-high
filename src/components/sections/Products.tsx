@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Leaf, Wheat, Droplets, Package, Search, Circle } from "lucide-react";
+import { Paintbrush, Layers, Grid3x3, BookOpen, Search, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import FadingVideo from "@/components/ui/FadingVideo";
 
-// Pexels: overhead drone of colorful spice market
+// Artisan / weaving / textile footage from Pexels
 const PRODUCTS_VIDEO =
-  "https://videos.pexels.com/video-files/7667722/7667722-uhd_2560_1440_25fps.mp4";
+  "https://videos.pexels.com/video-files/6804099/6804099-uhd_2560_1440_25fps.mp4";
 
 interface CategoryCard {
   name: string;
@@ -20,46 +19,46 @@ interface CategoryCard {
 
 const CATEGORIES: CategoryCard[] = [
   {
-    name: "Spices & Herbs",
-    desc: "Turmeric, red chilli, cardamom, pepper, coriander — direct from Andhra Pradesh & Kerala.",
-    tags: ["FSSAI Cert", "Phytosanitary", "Export Grade"],
-    Icon: Leaf,
-    imgSrc: "/products/spices-herbs.png",
+    name: "Indian Handicrafts & Home Décor",
+    desc: "Curated handcrafted and functional décor sourced from India's artisan clusters — blending traditional craftsmanship with contemporary designs for modern retail and lifestyle markets.",
+    tags: ["Artisan Made", "Contemporary Design", "Retail Ready"],
+    Icon: Paintbrush,
+    imgSrc: "/products/handicrafts.png",
   },
   {
-    name: "Rice Varieties",
-    desc: "Basmati, Sona Masoori, Idly Rice, Ponni — sourced from Punjab, Telangana & Tamil Nadu.",
-    tags: ["Non-GMO", "APEDA Cert", "Custom Milling"],
-    Icon: Wheat,
-    imgSrc: "/products/rice-varieties.png",
+    name: "Textiles & Hospitality Linen",
+    desc: "Export-quality towels, bed linen, pillow covers, floor mats, and kitchen textiles for hospitality, retail, and institutional buyers — consistent specifications at scale.",
+    tags: ["Export Grade", "Bulk Supply", "Hospitality Spec"],
+    Icon: Layers,
+    imgSrc: "/products/textiles.png",
   },
   {
-    name: "Pulses & Lentils",
-    desc: "Chana dal, toor dal, moong, urad — cleaned, sorted and export-packed.",
-    tags: ["Machine Cleaned", "Low Moisture", "Bulk & Retail"],
-    Icon: Circle,
-    imgSrc: "/products/pulses-lentils.png",
+    name: "Carpets & Rugs",
+    desc: "Hand-knotted and machine-woven carpets from India's established rug hubs — a rich tradition of weaving that spans centuries, now available for global retail buyers.",
+    tags: ["Hand Knotted", "Rug Hubs", "Custom Sizes"],
+    Icon: Grid3x3,
+    imgSrc: "/products/carpets.png",
   },
   {
-    name: "Edible Oils",
-    desc: "Cold-pressed coconut oil, groundnut oil, sesame oil — food-grade certified.",
-    tags: ["Cold Press", "Food Grade", "BRC Aligned"],
-    Icon: Droplets,
-    imgSrc: "/products/edible-oils.png",
+    name: "Paper & Stationery",
+    desc: "Premium paper products, handmade journals, and stationery sourced from specialised Indian production facilities — ideal for gifting, retail, and corporate buyers.",
+    tags: ["Handmade Paper", "Eco Friendly", "Gifting Range"],
+    Icon: BookOpen,
+    imgSrc: "/products/paper-stationery.jpeg",
   },
   {
-    name: "FMCG Goods",
-    desc: "Packaged foods, personal care, household goods — bulk wholesale for distributors.",
-    tags: ["Multi-SKU", "Private Label", "MOQ Flexible"],
-    Icon: Package,
-    imgSrc: "/products/fmcg-goods.png",
+    name: "Woodcraft & Artisan Gifts",
+    desc: "Finely finished wooden décor, carved gifts, and artisan craft pieces from India's skilled woodcraft regions — unique products that carry cultural heritage.",
+    tags: ["Hand Carved", "Heritage Craft", "Gifting"],
+    Icon: Sparkles,
+    imgSrc: "/products/woodcraft.jpeg",
   },
   {
     name: "Custom Sourcing",
-    desc: "Don't see your product? We'll source it from our 200+ verified Indian suppliers.",
-    tags: ["Any Commodity", "24hr Response", "Free Quote"],
+    desc: "Need something specific? Our verified supplier network across India covers spices, specialty textiles, select machinery, and emerging trade categories tailored to your requirements.",
+    tags: ["Any Category", "Verified Suppliers", "Free Quote"],
     Icon: Search,
-    imgSrc: "/products/custom-sourcing.png",
+    imgSrc: "/products/custom-sourcing-2.png",
   },
 ];
 
@@ -71,7 +70,7 @@ function ProductCard({ name, desc, tags, Icon, imgSrc }: CategoryCard) {
       className="group relative cursor-pointer overflow-hidden flex flex-col"
       style={{
         borderRadius: "1.25rem",
-        minHeight: "400px",
+        minHeight: "420px",
         backdropFilter: "blur(28px)",
         WebkitBackdropFilter: "blur(28px)",
         background: "rgba(14,18,16,0.55)",
@@ -85,7 +84,7 @@ function ProductCard({ name, desc, tags, Icon, imgSrc }: CategoryCard) {
         style={{ background: "#c8a96e", borderRadius: "1.25rem 1.25rem 0 0" }}
       />
 
-      {/* Image — fills top 55% of card */}
+      {/* Image — fills top portion of card */}
       <div className="relative w-full overflow-hidden" style={{ height: "220px" }}>
         <Image
           src={imgSrc}
@@ -136,7 +135,7 @@ function ProductCard({ name, desc, tags, Icon, imgSrc }: CategoryCard) {
       <div className="p-5 pt-4 flex flex-col flex-1">
         <h3
           className="font-display italic text-white"
-          style={{ fontSize: "clamp(1.5rem,2.5vw,2rem)", letterSpacing: "-1px", lineHeight: 1 }}
+          style={{ fontSize: "clamp(1.35rem,2.2vw,1.8rem)", letterSpacing: "-0.5px", lineHeight: 1.1 }}
         >
           {name}
         </h3>
@@ -144,7 +143,7 @@ function ProductCard({ name, desc, tags, Icon, imgSrc }: CategoryCard) {
           {desc}
         </p>
         <div className="mt-auto pt-4 flex items-center gap-1.5 text-xs font-body font-medium" style={{ color: "#c8a96e" }}>
-          <span>View details</span>
+          <span>Enquire now</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <path d="M7 17L17 7M7 7h10v10" />
           </svg>
@@ -156,18 +155,12 @@ function ProductCard({ name, desc, tags, Icon, imgSrc }: CategoryCard) {
 
 export default function Products() {
   return (
-    <section id="products" className="relative min-h-screen overflow-hidden" style={{ background: "#0e1210" }}>
-      {/* Video BG */}
-      <FadingVideo
-        src={PRODUCTS_VIDEO}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
-
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 z-[1]" style={{ background: "rgba(14,18,16,0.6)" }} />
+    <section id="products" className="relative overflow-hidden" style={{ background: "#0e1210" }}>
+      {/* Subtle top separator */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(200,169,110,0.3), transparent)" }} />
 
       {/* Content */}
-      <div className="relative z-10 px-8 md:px-16 lg:px-20 pt-24 pb-16 flex flex-col min-h-screen">
+      <div className="relative z-10 px-8 md:px-16 lg:px-20 pt-24 pb-20 flex flex-col">
 
         {/* Section header */}
         <motion.div
@@ -175,13 +168,17 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.7, ease: "easeOut" as const }}
           viewport={{ once: true, amount: 0.2 }}
+          className="max-w-2xl"
         >
           <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
-            Our Products
+            Our Trade Focus
           </p>
           <h2 className="font-display italic text-white text-display-lg leading-[0.9]">
-            Quality Goods,<br />Globally Traded
+            Craftsmanship,<br />Traded Globally
           </h2>
+          <p className="mt-6 font-body font-light text-white/60 text-sm leading-relaxed max-w-lg">
+            We connect global buyers with India&apos;s manufacturing excellence — from handcrafted artisan products to standardised export-quality textiles and home décor.
+          </p>
         </motion.div>
 
         {/* Grid */}
@@ -206,9 +203,9 @@ export default function Products() {
           className="mt-12 text-center"
         >
           <p className="font-body text-sm text-white/60">
-            Can&apos;t find your product?{" "}
+            Looking for something specific?{" "}
             <a href="#contact" className="text-white underline underline-offset-2 hover:text-white/80 transition-colors">
-              Request custom sourcing →
+              Contact us for custom sourcing →
             </a>
           </p>
         </motion.div>

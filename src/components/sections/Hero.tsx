@@ -11,7 +11,7 @@ import MarqueeStrip from "@/components/ui/MarqueeStrip";
 const HERO_VIDEO =
   //"https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4";
   "https://videos.pexels.com/video-files/26796988/12008898_2560_1440_30fps.mp4";
-const PARTNERS = ["Agrimark", "SpiceRoute", "HarvestCo", "TradeAxis", "Vantage"];
+const MARKETS = ["Australia", "New Zealand", "Japan", "UK", "Middle East"];
 
 const STAT_CARDS = [
   { Icon: Clock, num: "500+", label: "Shipments Completed" },
@@ -80,13 +80,13 @@ export default function Hero() {
               New
             </span>
             <span className="text-sm font-body text-white/90">
-              Maiden Certified Exports to 20+ Countries
+              India's Artisan Heritage, Traded Globally
             </span>
           </motion.div>
 
           {/* Headline — BlurText word-by-word */}
           <BlurText
-            text="Where Indian Commodities Meet the World."
+            text="Where Indian Craft Meets the World."
             className="font-display italic text-display-xl text-white leading-[0.9] max-w-3xl"
             style={{
               letterSpacing: "-4px",
@@ -101,8 +101,9 @@ export default function Hero() {
             className="font-body font-light text-sm md:text-base text-white max-w-xl leading-relaxed mt-2"
             style={{ textShadow: "0 1px 12px rgba(0,0,0,0.8)" }}
           >
-            Sourcing, exporting and importing quality goods across Asia, the Middle East,
-            and beyond with full documentation and on-time delivery guaranteed.
+            Connecting global buyers with India's finest handicrafts, home décor,
+            textiles, carpets, and artisan products — with reliable sourcing and
+            full export support from a trusted trade partner.
           </motion.p>
 
           {/* CTAs */}
@@ -179,12 +180,12 @@ export default function Hero() {
           className="flex flex-col items-center gap-4 pb-8"
         >
           <span className="liquid-glass rounded-full px-3.5 py-1 text-xs font-body font-medium text-white">
-            Trusted by traders across Asia &amp; the Middle East
+            Serving buyers across
           </span>
-          <div className="flex items-center gap-12 md:gap-16 flex-wrap justify-center px-4">
-            {PARTNERS.map((p) => (
-              <span key={p} className="font-display italic text-2xl md:text-3xl text-white tracking-tight">
-                {p}
+          <div className="flex items-center gap-10 md:gap-14 flex-wrap justify-center px-4">
+            {MARKETS.map((m) => (
+              <span key={m} className="font-display italic text-xl md:text-2xl text-white/80 tracking-tight">
+                {m}
               </span>
             ))}
           </div>

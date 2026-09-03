@@ -65,8 +65,7 @@ export default function Contact() {
             className="flex flex-col gap-6"
           >
             <p className="font-body font-light text-white/70 text-sm leading-relaxed max-w-sm">
-              Whether you&apos;re looking to source agricultural commodities, establish an
-              import channel, or explore trade consulting — we&apos;re ready to talk.
+              Whether you&apos;re looking to source handicrafts, home décor, textiles, carpets, or any other Indian product — we&apos;re ready to talk. Importers, distributors, sourcing partners, and retailers are all welcome.
             </p>
 
             <div className="flex flex-col gap-4">

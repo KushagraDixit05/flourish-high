@@ -1,12 +1,12 @@
 const ITEMS = [
-  "Basmati Rice",
-  "Spices & Herbs",
-  "Pulses & Lentils",
-  "Edible Oils",
-  "Agricultural Commodities",
-  "FMCG Goods",
+  "Handicrafts & Home Décor",
+  "Textiles & Hospitality Linen",
+  "Carpets & Rugs",
+  "Paper & Stationery",
+  "Artisan Products",
   "Custom Sourcing",
-  "Certified Exports",
+  "Global Trade",
+  "India's Best Crafts",
 ];
 
 export default function MarqueeStrip() {

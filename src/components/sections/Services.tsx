@@ -1,182 +1,177 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { Ship, PackageOpen, FileSearch } from "lucide-react";
+import { MessageSquare, Users, FlaskConical, ShieldCheck, PackageCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import FadingVideo from "@/components/ui/FadingVideo";
 
-const SERVICES_VIDEO =
-  //"https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4";
-  "https://videos.pexels.com/video-files/29903737/12836096_2560_1440_60fps.mp4";
-interface ServiceCard {
-  name: string;
+interface Step {
+  num: string;
+  title: string;
   desc: string;
-  tags: string[];
   Icon: LucideIcon;
-  imgSrc: string;
 }
 
-const SERVICES: ServiceCard[] = [
+const STEPS: Step[] = [
   {
-    name: "Export Services",
-    desc: "End-to-end sourcing, quality inspection, documentation and freight from India to your port.",
-    tags: ["FOB / CIF / CFR", "APEDA Docs", "Pre-Ship Inspect", "Phytosanitary"],
-    Icon: Ship,
-    imgSrc: "/products/export-services.png",
+    num: "01",
+    title: "Understand Your Requirements",
+    desc: "We listen carefully to your sourcing needs, market specifications, target quality standards, and delivery expectations — so we start with complete clarity.",
+    Icon: MessageSquare,
   },
   {
-    name: "Import Services",
-    desc: "We procure goods internationally on your behalf — supplier vetting, customs clearance, last-mile.",
-    tags: ["Supplier Vetting", "Customs Filing", "Lab Testing", "Bonded Warehouse"],
-    Icon: PackageOpen,
-    imgSrc: "/products/import-services.png",
+    num: "02",
+    title: "Identify Trusted Suppliers",
+    desc: "We connect you with verified manufacturers and artisans from our curated network across India's established production clusters — matched precisely to your product category.",
+    Icon: Users,
   },
   {
-    name: "Trade Consulting",
-    desc: "HS code advisory, RoDTEP / duty optimisation, market entry research, and compliance guidance.",
-    tags: ["HS Code Advice", "Duty Optimise", "Market Research", "Compliance"],
-    Icon: FileSearch,
-    imgSrc: "/products/trade-consulting.png",
+    num: "03",
+    title: "Sampling & Commercial Alignment",
+    desc: "Before any commitment, we arrange product samples and ensure quality, specifications, and pricing all meet your expectations and market requirements.",
+    Icon: FlaskConical,
+  },
+  {
+    num: "04",
+    title: "Quality Check & Packaging",
+    desc: "Rigorous pre-shipment inspection is standard on every order. We oversee packaging to ensure products arrive exactly as agreed — no surprises.",
+    Icon: ShieldCheck,
+  },
+  {
+    num: "05",
+    title: "Export Documentation & Shipping",
+    desc: "We handle complete logistics support — documentation, customs coordination, and freight — for smooth international delivery to your port.",
+    Icon: PackageCheck,
   },
 ];
 
-function ServiceCard({ name, desc, tags, Icon, imgSrc }: ServiceCard) {
+export default function HowWeWork() {
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 280, damping: 22 }}
-      className="group relative cursor-pointer flex flex-col overflow-hidden"
-      style={{
-        borderRadius: "1.25rem",
-        minHeight: "420px",
-        backdropFilter: "blur(28px)",
-        WebkitBackdropFilter: "blur(28px)",
-        background: "rgba(14,18,16,0.55)",
-        border: "1px solid rgba(255,255,255,0.12)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1)",
-      }}
+    <section
+      id="how-we-work"
+      className="relative overflow-hidden px-8 md:px-16 lg:px-20 py-24"
+      style={{ background: "#0e1210" }}
     >
-      {/* Gold top border on hover */}
-      <span
-        className="absolute top-0 left-0 right-0 h-[1.5px] z-20 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
-        style={{ background: "linear-gradient(90deg, #c8a96e, rgba(200,169,110,0.3))", borderRadius: "1.25rem 1.25rem 0 0" }}
+      {/* Subtle separator top */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(200,169,110,0.2), transparent)" }}
       />
 
-      {/* Image — top portion */}
-      <div className="relative w-full overflow-hidden flex-shrink-0" style={{ height: "220px" }}>
-        <Image
-          src={imgSrc}
-          alt={name}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        {/* Gradient into dark card body */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(14,18,16,0) 35%, rgba(14,18,16,0.55) 70%, rgba(14,18,16,0.9) 100%)",
-          }}
-        />
-        {/* Icon badge over image */}
-        <div
-          className="absolute bottom-3 left-4 w-10 h-10 flex items-center justify-center z-10"
-          style={{
-            borderRadius: "0.75rem",
-            background: "rgba(200,169,110,0.15)",
-            border: "1px solid rgba(200,169,110,0.3)",
-            backdropFilter: "blur(8px)",
-          }}
-        >
-          <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: "#c8a96e" }} />
-        </div>
-        {/* Tags — top-right over image */}
-        <div className="absolute top-3 right-3 flex flex-wrap justify-end gap-1.5 max-w-[70%] z-10">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full px-2.5 py-0.5 text-[10px] font-body text-white/90 whitespace-nowrap"
-              style={{
-                background: "rgba(14,18,16,0.55)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Text content */}
-      <div className="p-5 pt-4 flex flex-col flex-1">
-        <h3
-          className="font-display italic text-white"
-          style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", letterSpacing: "-1px", lineHeight: 1 }}
-        >
-          {name}
-        </h3>
-        <p className="mt-3 text-sm font-body font-light leading-snug max-w-[32ch]" style={{ color: "rgba(255,255,255,0.75)" }}>
-          {desc}
+      {/* Section header */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.7, ease: "easeOut" as const }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="mb-16"
+      >
+        <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
+          How We Work
         </p>
-        <div className="mt-auto pt-4 flex items-center gap-1.5 text-xs font-body font-medium" style={{ color: "#c8a96e" }}>
-          <span>Learn more</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M7 17L17 7M7 7h10v10" />
-          </svg>
+        <h2
+          className="font-display italic text-white leading-[0.9]"
+          style={{ fontSize: "clamp(2.5rem,5vw,5rem)", letterSpacing: "-2px" }}
+        >
+          Simple process,<br />reliable results.
+        </h2>
+        <p className="mt-6 font-body font-light text-white/60 text-sm leading-relaxed max-w-lg">
+          From first enquiry to final delivery, we manage every step of the trade journey — so you can focus on your business.
+        </p>
+      </motion.div>
+
+      {/* Steps — alternating layout on desktop */}
+      <div className="relative">
+        {/* Vertical connector line (desktop) */}
+        <div
+          className="absolute left-[calc(50%-1px)] top-0 bottom-0 w-px hidden md:block"
+          style={{ background: "linear-gradient(to bottom, transparent, rgba(200,169,110,0.2) 10%, rgba(200,169,110,0.2) 90%, transparent)" }}
+        />
+
+        <div className="flex flex-col gap-8 md:gap-12">
+          {STEPS.map((step, i) => {
+            const isEven = i % 2 === 0;
+            return (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, x: isEven ? -30 : 30, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.65, ease: "easeOut" as const, delay: i * 0.08 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-start md:items-center gap-6 md:gap-12`}
+              >
+                {/* Content card — half width on desktop */}
+                <div
+                  className="flex-1 p-6 md:p-8 group"
+                  style={{
+                    borderRadius: "1.25rem",
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    transition: "border-color 0.3s",
+                  }}
+                >
+                  {/* Number + icon row */}
+                  <div className="flex items-center gap-4 mb-5">
+                    <span
+                      className="font-display italic text-5xl leading-none select-none"
+                      style={{ color: "#c8a96e", opacity: 0.35 }}
+                    >
+                      {step.num}
+                    </span>
+                    <div
+                      className="w-10 h-10 flex items-center justify-center flex-shrink-0"
+                      style={{
+                        borderRadius: "0.75rem",
+                        background: "rgba(200,169,110,0.12)",
+                        border: "1px solid rgba(200,169,110,0.25)",
+                      }}
+                    >
+                      <step.Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: "#c8a96e" }} />
+                    </div>
+                  </div>
+                  <h3
+                    className="font-display italic text-white mb-3"
+                    style={{ fontSize: "clamp(1.3rem,2vw,1.75rem)", letterSpacing: "-0.5px", lineHeight: 1.1 }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="font-body font-light text-sm text-white/60 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+
+                {/* Centre node on the connector line (desktop only) */}
+                <div className="hidden md:flex items-center justify-center flex-shrink-0 z-10" style={{ width: "2px" }}>
+                  <div
+                    className="w-3 h-3 rounded-full"
+                    style={{ background: "#c8a96e", boxShadow: "0 0 12px rgba(200,169,110,0.6)" }}
+                  />
+                </div>
+
+                {/* Spacer on opposite side */}
+                <div className="flex-1 hidden md:block" />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
-    </motion.div>
-  );
-}
 
-export default function Services() {
-  return (
-    <section id="services" className="relative min-h-screen overflow-hidden" style={{ background: "#0e1210" }}>
-      <FadingVideo
-        src={SERVICES_VIDEO}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
-
-      {/* Overlay */}
-      <div className="absolute inset-0 z-[1]" style={{ background: "rgba(14,18,16,0.35)" }} />
-
-      <div className="relative z-10 px-8 md:px-16 lg:px-20 pt-24 pb-10 flex flex-col min-h-screen">
-
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, ease: "easeOut" as const }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mb-auto"
+      {/* Bottom CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" as const, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="mt-16 flex flex-col sm:flex-row items-center gap-4 justify-center"
+      >
+        <p className="font-body text-sm text-white/60">Ready to start?</p>
+        <a
+          href="#contact"
+          className="flex items-center gap-1.5 bg-white rounded-full px-5 py-2.5 text-sm font-body font-semibold hover:bg-white/90 transition-colors duration-200"
+          style={{ color: "#0e1210" }}
         >
-          <p className="text-sm font-body mb-6 tracking-widest uppercase" style={{ color: "rgba(200,169,110,0.9)" }}>
-            Services
-          </p>
-          <h2
-            className="font-display italic text-white leading-[0.9]"
-            style={{ fontSize: "clamp(3.5rem,8vw,6rem)", letterSpacing: "-3px" }}
-          >
-            Trade,<br />evolved
-          </h2>
-        </motion.div>
-
-        {/* Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" as const, delay: 0.15 }}
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16"
-        >
-          {SERVICES.map((svc) => (
-            <ServiceCard key={svc.name} {...svc} />
-          ))}
-        </motion.div>
-      </div>
+          Send a Trade Enquiry
+        </a>
+      </motion.div>
     </section>
   );
 }
