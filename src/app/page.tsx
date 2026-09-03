@@ -1,10 +1,13 @@
-import Navbar   from "@/components/layout/Navbar";
-import Hero     from "@/components/sections/Hero";
-import Products from "@/components/sections/Products";
-import Services from "@/components/sections/Services";
-import WhyUs   from "@/components/sections/WhyUs";
-import Contact  from "@/components/sections/Contact";
-import Footer   from "@/components/layout/Footer";
+import Navbar    from "@/components/layout/Navbar";
+import Hero      from "@/components/sections/Hero";
+import Verticals from "@/components/sections/Verticals";
+import Products  from "@/components/sections/Products";
+import About     from "@/components/sections/About";
+import Services  from "@/components/sections/Services";
+import WhyUs     from "@/components/sections/WhyUs";
+import FAQ       from "@/components/sections/FAQ";
+import Contact   from "@/components/sections/Contact";
+import Footer    from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -12,9 +15,12 @@ export default function Home() {
       {/* Navbar lives at root level — never inside any section stacking context */}
       <Navbar />
       <Hero />
+      <Verticals />
       <Products />
+      <About />
       <Services />
       <WhyUs />
+      <FAQ />
       <Contact />
       <Footer />
     </main>
