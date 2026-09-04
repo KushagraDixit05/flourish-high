@@ -1,37 +1,38 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
+// import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+// import { useMotionValue, useTransform, animate, useInView } from "framer-motion";
 
 // ── CountUp component ────────────────────────────────────────────────────────
-function CountUp({ target, suffix = "+" }: { target: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v) + suffix);
-
-  useEffect(() => {
-    if (inView) animate(count, target, { duration: 2, ease: "easeOut" });
-  }, [inView, count, target]);
-
-  return (
-    <motion.span
-      ref={ref}
-      className="font-display italic text-white"
-      style={{ fontSize: "clamp(2.5rem,5vw,3.5rem)", letterSpacing: "-2px" }}
-    >
-      {rounded}
-    </motion.span>
-  );
-}
+// function CountUp({ target, suffix = "+" }: { target: number; suffix?: string }) {
+//   const ref = useRef<HTMLSpanElement>(null);
+//   const inView = useInView(ref, { once: true });
+//   const count = useMotionValue(0);
+//   const rounded = useTransform(count, (v) => Math.round(v) + suffix);
+//
+//   useEffect(() => {
+//     if (inView) animate(count, target, { duration: 2, ease: "easeOut" });
+//   }, [inView, count, target]);
+//
+//   return (
+//     <motion.span
+//       ref={ref}
+//       className="font-display italic text-white"
+//       style={{ fontSize: "clamp(2.5rem,5vw,3.5rem)", letterSpacing: "-2px" }}
+//     >
+//       {rounded}
+//     </motion.span>
+//   );
+// }
 
 // ── Data ─────────────────────────────────────────────────────────────────────
-const STATS = [
-  { target: 500, label: "Shipments completed" },
-  { target: 20, label: "Countries served" },
-  { target: 200, label: "Supplier network" },
-  { target: 5, label: "Core product categories" },
-];
+// const STATS = [
+//   { target: 500, label: "Shipments completed" },
+//   { target: 20, label: "Countries served" },
+//   { target: 200, label: "Supplier network" },
+//   { target: 5, label: "Core product categories" },
+// ];
 
 const DIFFERENTIATORS = [
   {
@@ -106,8 +107,8 @@ export default function WhyUs() {
         </h2>
       </motion.div>
 
-      {/* Stat counters */}
-      <motion.div
+      {/* Stat counters — commented out until FHI has verified numbers to publish */}
+      {/* <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
@@ -120,7 +121,7 @@ export default function WhyUs() {
             <p className="font-body font-light text-sm text-white/60 mt-1">{label}</p>
           </div>
         ))}
-      </motion.div>
+      </motion.div> */}
 
       {/* Differentiator grid */}
       <motion.div
