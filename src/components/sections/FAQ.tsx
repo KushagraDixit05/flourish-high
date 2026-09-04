@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import GlobalReach from "@/components/sections/GlobalReach";
 
 const FAQS = [
   {
@@ -96,48 +97,59 @@ export default function FAQ() {
         style={{ background: "linear-gradient(90deg, transparent, rgba(200,169,110,0.2), transparent)" }}
       />
 
-      <div className="max-w-4xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, ease: "easeOut" as const }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mb-12"
-        >
-          <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
-            FAQ
-          </p>
-          <h2
-            className="font-display italic text-white leading-[0.9]"
-            style={{ fontSize: "clamp(2.5rem,5vw,5rem)", letterSpacing: "-2px" }}
-          >
-            Everything you need<br />to know about FHI.
-          </h2>
-        </motion.div>
+      {/* Two-column grid: FAQ left, World Map right */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-        {/* FAQ items */}
-        <div className="border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-          {FAQS.map((faq, i) => (
-            <FAQItem key={faq.q} q={faq.q} a={faq.a} index={i} />
-          ))}
+        {/* ── Left column: FAQ content ─────────────────────────────────── */}
+        <div>
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, ease: "easeOut" as const }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-12"
+          >
+            <p className="text-sm font-body mb-4 tracking-widest uppercase" style={{ color: "#c8a96e" }}>
+              FAQ
+            </p>
+            <h2
+              className="font-display italic text-white leading-[0.9]"
+              style={{ fontSize: "clamp(2.5rem,5vw,5rem)", letterSpacing: "-2px" }}
+            >
+              Everything you need<br />to know about FHI.
+            </h2>
+          </motion.div>
+
+          {/* FAQ items */}
+          <div className="border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+            {FAQS.map((faq, i) => (
+              <FAQItem key={faq.q} q={faq.q} a={faq.a} index={i} />
+            ))}
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" as const, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-12"
+          >
+            <p className="font-body text-sm text-white/60">
+              Still have questions?{" "}
+              <a href="#contact" className="text-white underline underline-offset-2 hover:text-white/80 transition-colors">
+                Send us a message →
+              </a>
+            </p>
+          </motion.div>
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" as const, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-12"
-        >
-          <p className="font-body text-sm text-white/60">
-            Still have questions?{" "}
-            <a href="#contact" className="text-white underline underline-offset-2 hover:text-white/80 transition-colors">
-              Send us a message →
-            </a>
-          </p>
-        </motion.div>
+        {/* ── Right column: World Map ──────────────────────────────────── */}
+        <div className="lg:sticky lg:top-24">
+          <GlobalReach />
+        </div>
+
       </div>
     </section>
   );
