@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, MessageCircle, Mail, MapPin, Phone } from "lucide-react";
 import FadingVideo from "@/components/ui/FadingVideo";
@@ -20,6 +21,41 @@ const CONTACT = {
 const waUrl = `https://wa.me/${CONTACT.whatsapp}?text=Hello%2C%20I%27m%20interested%20in%20trading%20with%20Flourish%20High.`;
 
 export default function Contact() {
+  // Detect mobile for WhatsApp label
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent));
+  }, []);
+
+  // Build mailto from form fields and open the email client
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const get = (k: string) => (fd.get(k) as string | null) ?? "";
+
+    const subject = encodeURIComponent(
+      `Trade Enquiry — ${get("product") || "General"} | ${get("company") || get("name")}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${get("name")}
+` +
+      `Email: ${get("email")}
+` +
+      `Company: ${get("company")}
+` +
+      `Country: ${get("country")}
+` +
+      `Product of Interest: ${get("product")}
+` +
+      `Estimated Quantity / MOQ: ${get("quantity")}
+
+` +
+      `Message:
+${get("message")}`
+    );
+
+    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+  }
   return (
     <section id="contact" className="relative min-h-screen overflow-hidden" style={{ background: "#0e1210" }}>
       {/* Video BG */}
@@ -117,16 +153,16 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* WhatsApp CTA */}
+            {/* WhatsApp CTA — wa.me works on both mobile (opens app) and desktop (opens web.whatsapp.com) */}
             <a
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-body font-medium text-white transition-colors mt-2 hover:opacity-90"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-body font-medium text-white transition-opacity mt-2 hover:opacity-90"
               style={{ background: "#2d6a4f" }}
             >
               <MessageCircle className="w-4 h-4" />
-              Chat on WhatsApp
+              {isMobile ? "Open WhatsApp" : "Chat on WhatsApp"}
             </a>
           </motion.div>
 
@@ -145,7 +181,7 @@ export default function Contact() {
             >
               Request a Free Quote
             </h3>
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   id="rfq-name"

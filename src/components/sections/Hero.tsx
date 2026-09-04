@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Clock, Globe } from "lucide-react";
+import { ArrowUpRight, Route, ShieldCheck } from "lucide-react";
 import FadingVideo from "@/components/ui/FadingVideo";
 import BlurText from "@/components/ui/BlurText";
 import MarqueeStrip from "@/components/ui/MarqueeStrip";
@@ -14,8 +14,8 @@ const HERO_VIDEO =
 const MARKETS = ["Australia", "New Zealand", "Japan", "UK", "Middle East"];
 
 const STAT_CARDS = [
-  { Icon: Clock, num: "500+", label: "Shipments Completed" },
-  { Icon: Globe, num: "20+", label: "Countries Served" },
+  { Icon: Route,        num: "End-to-End",        label: "Sourcing to delivery, one partner" },
+  { Icon: ShieldCheck,  num: "Quality Inspected",  label: "Every shipment, pre-departure" },
 ];
 
 const motionBase = {
@@ -160,8 +160,8 @@ export default function Hero() {
                 <Icon className="w-6 h-6" strokeWidth={1.5} style={{ color: "#c8a96e" }} />
                 <div>
                   <p
-                    className="font-display italic text-4xl text-white"
-                    style={{ letterSpacing: "-1px", lineHeight: 1 }}
+                    className="font-display italic text-white"
+                    style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)", letterSpacing: "-0.5px", lineHeight: 1.15 }}
                   >
                     {num}
                   </p>
