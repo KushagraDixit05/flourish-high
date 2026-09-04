@@ -170,7 +170,7 @@ function VerticalCard({ v, i }: { v: Vertical; i: number }) {
 export default function Verticals() {
   return (
     <section
-      id="about"
+      id="what-we-do"
       className="relative overflow-hidden px-8 md:px-16 lg:px-20 py-24"
       style={{ background: "#0e1210" }}
     >

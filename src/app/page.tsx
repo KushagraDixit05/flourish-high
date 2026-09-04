@@ -15,10 +15,10 @@ export default function Home() {
       {/* Navbar lives at root level — never inside any section stacking context */}
       <Navbar />
       <Hero />
-      <Verticals />
       <Products />
       <About />
       <Services />
+      <Verticals />
       <WhyUs />
       <FAQ />
       <Contact />
